@@ -3,7 +3,7 @@
 var CCHBBClient = {
   // baseURL: 'https://cch-bobsbagels-api.herokuapp.com/',
   jsonAppend: '.json',
-  baseURL: 'http://localhost:3000/',
+  baseURL: 'https://cch-bobsbagels-api.herokuapp.com/',
 
   cart: {
     orders: []
