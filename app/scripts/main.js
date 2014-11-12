@@ -25,6 +25,26 @@ CCHBBClient.addEvents = function() {
     CCHBBClient.renderCart(name, price);
     CCHBBClient.router.menu();
   });
+
+  $('#content').on('click', '.js-delete-item', function(e) {
+    e.preventDefault();
+    var name = $(this).next().html();
+    var newOrder = CCHBBClient.cart.orders.filter(function(item) {
+                        return item.name !== name;
+                       });
+    CCHBBClient.cart.orders = newOrder;
+    CCHBBClient.router.cart();
+  });
+
+  $('#content').on('click', '.js-delete-item-cart', function(e) {
+    e.preventDefault();
+    var name = $(this).next().html();
+    var newOrder = CCHBBClient.cart.orders.filter(function(item) {
+                        return item.name !== name;
+                       });
+    CCHBBClient.cart.orders = newOrder;
+    CCHBBClient.router.menu();
+  });
     // $('#js-placeOrder').on('submit', CCHBBClient.checkOut);
 
     // $('.js-taskForm').on('submit', CCHBBClient.submitTaskForm);
@@ -93,7 +113,7 @@ var Router = Backbone.Router.extend({
 
     function stripeResponseHandler(status, response) {
       var $form = $('#payment-form');
-    
+
       if (response.error) {
         // Show the errors on the form
         $form.find('.payment-errors').text(response.error.message);
