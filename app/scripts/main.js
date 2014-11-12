@@ -66,8 +66,11 @@ var Router = Backbone.Router.extend({
   },
 
   home: function() {
-    var template = Handlebars.compile($("#home-temp").html());
-    $('#content').html(template({}));
+    var template = Handlebars.templates['home'];
+
+    $('#content').html(template({
+        name: 'Bob'
+    }));
   },
 
   menu: function() {
