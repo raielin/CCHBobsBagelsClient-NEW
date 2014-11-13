@@ -407,8 +407,8 @@ jQuery(document).ready(function($){
     minlength: 2,
     required: true
     },
-	phone: {
-    required: true,
+		phone: {
+    required: false,
     },
     email: {
     required: true,
