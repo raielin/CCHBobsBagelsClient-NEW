@@ -2,8 +2,9 @@
 
 var CCHBBClient = {
   jsonAppend: '.json',
+  // baseURL: 'https://warm-meadow-1723.herokuapp.com/',
   // baseURL: 'https://cch-bobsbagels-api.herokuapp.com/',
-  baseURL: 'http://localhost:3000/'
+  baseURL: 'http://localhost:3000/',
 
   cart: {
     orders: []
@@ -128,7 +129,7 @@ var Router = Backbone.Router.extend({
     $.ajax({
       url: CCHBBClient.baseURL + 'menus' + CCHBBClient.jsonAppend,
       type: 'GET',
-      dataType: 'json'
+      dataType: 'json',
     }).done(function(response) {
       $('#content').html(template({
         menu: response.menus,
