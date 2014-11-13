@@ -55,6 +55,11 @@ var CCHBBClient = {
   }
 };
 
+CCHBBClient.renderPgNav = function() {
+  var compiledTemplate = Handlebars.getTemplate('nav_pgs');
+  var html = compiledTemplate({});
+};
+
 CCHBBClient.renderCart = function(name, price) {
   CCHBBClient.cart.orders.push({name: name, price: price});
 };
@@ -118,14 +123,12 @@ var Router = Backbone.Router.extend({
 
   home: function() {
     var template = Handlebars.templates['home'];
-
-    $('#content').html(template({
-        name: 'Bob'
-    }));
+    $('#content').html(template({}));
   },
 
   menu: function() {
     var template = Handlebars.compile($("#menu-temp").html());
+    $('#content').html(template({}));
     $.ajax({
       url: CCHBBClient.baseURL + 'menus' + CCHBBClient.jsonAppend,
       type: 'GET',
@@ -139,7 +142,9 @@ var Router = Backbone.Router.extend({
   },
 
   about: function() {
-    var template = Handlebars.compile($("#about-temp").html());
+    // var template = Handlebars.compile($("#about-temp").html());
+    // $('#content').html(template({}));
+    var template = Handlebars.templates['about'];
     $('#content').html(template({}));
   },
 

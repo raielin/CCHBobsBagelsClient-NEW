@@ -38,6 +38,28 @@ div#navigation ul li a {
   text-decoration: none;
 }
 
+/*Home Page Styles*/
+
+.container .carousel-caption {
+  margin-bottom: 60px;
+}
+
+.container .carousel-caption h1 {
+  font-size: 42px;
+  color: white;
+}
+
+.container .carousel-caption p {
+  font-size: 26px;
+  color: purple;
+}
+
+/*About Page Styles*/
+.about img {
+  float: right;
+  padding-right: 15px;
+}
+
 /*Menu styles*/
 
 .price {

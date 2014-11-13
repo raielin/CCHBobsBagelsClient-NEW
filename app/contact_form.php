@@ -1,11 +1,11 @@
 <?php
 
- 
-//Prefedined Variables  
-$to = "checkingforms@yahoo.com";
+
+//Prefedined Variables
+$to = "raielin@gmail.com";
 
 // Email Subject
-$subject = "Contact from your website.";
+$subject = "Website Message";
 
 
 // This IF condition is for improving security  and Prevent Direct Access to the Mail Script.
@@ -35,18 +35,18 @@ $headers .= 'Content-type: text/html; charset=UTF-8';
 
 if( ! empty($name) && ! empty($email) && ! empty($content) ) {
 
-// Sending Email 
-if( mail($to, $subject, $content, $headers) ) {
-print "<p>Thank you, we will getback to you shortly</p><br>";
-return true;
-}
-else {
-print "<p>Some errors to send the mail.</p>";
-return false;
-}
-}
-else {
-print "<p>Some errors to send the mail.</p>";
-return false;
-}
+  // Sending Email
+  if( mail($to, $subject, $content, $headers) ) {
+    print "<p>Thank you, we will getback to you shortly</p><br>";
+    return true;
+  }
+  else {
+    print "<p>So sorry, but there was a problem sending your message. Please make sure all required fields are filled in. Otherwise, feel free to call us directly at 617.456.7890.</p>";
+    return false;
+  }
+  }
+  else {
+    print "<p>So sorry, but there was a problem sending your message. Please make sure all required fields are filled in. Otherwise, feel free to call us directly at 617.456.7890.</p>";
+    return false;
+  }
 }
