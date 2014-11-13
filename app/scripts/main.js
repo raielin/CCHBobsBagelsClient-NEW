@@ -122,10 +122,7 @@ var Router = Backbone.Router.extend({
 
   home: function() {
     var template = Handlebars.templates['home'];
-
-    $('#content').html(template({
-        name: 'Bob'
-    }));
+    $('#content').html(template({}));
   },
 
   menu: function() {
@@ -144,10 +141,10 @@ var Router = Backbone.Router.extend({
   },
 
   about: function() {
-    var template = Handlebars.compile($("#about-temp").html());
-    $('#content').html(template({}));
+    // var template = Handlebars.compile($("#about-temp").html());
+    // $('#content').html(template({}));
     var template = Handlebars.templates['about'];
-    $('#about').html(template({}));
+    $('#content').html(template({}));
   },
 
   contact: function() {
