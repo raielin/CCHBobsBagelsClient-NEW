@@ -1,9 +1,9 @@
 'use strict';
 
 var CCHBBClient = {
-  // baseURL: 'https://cch-bobsbagels-api.herokuapp.com/',
   jsonAppend: '.json',
-  baseURL: 'https://cch-bobsbagels-api.herokuapp.com/',
+  // baseURL: 'https://cch-bobsbagels-api.herokuapp.com/',
+  baseURL: 'http://localhost:3000/'
 
   cart: {
     orders: []
@@ -135,8 +135,6 @@ var Router = Backbone.Router.extend({
         order_items: CCHBBClient.cart.orders
       }));
     });
-
-
   },
 
   about: function() {
@@ -168,6 +166,11 @@ var Router = Backbone.Router.extend({
      $('#content').html(template({
         order_items: CCHBBClient.cart.orders
       }));
+  },
+
+  confirmation: function() {
+    var template = Handlebars.compile($("#conf-temp").html());
+    $('#content').html(template({}));
   }
 });
 
@@ -181,19 +184,17 @@ $(function() {
 
   CCHBBClient.addEvents();
 
-  $('#payment-form').submit(function(event) {
-    var $form = $(this);
-    Stripe.setPublishableKey('pk_test_0fbtu0To5Q8TurGcFy6XZ505');
+  Stripe.setPublishableKey('pk_test_0fbtu0To5Q8TurGcFy6XZ505');
 
-    $('#content').on('click', '#checkout-button', function(event) {
+  $('#content').on('click', '#checkout-button', function(event) {
 
-      var $form = $('#payment-form');
+    var $form = $('#payment-form');
     // Disable the submit button to prevent repeated clicks
-      $form.find('button').prop('disabled', true);
+    $form.find('button').prop('disabled', true);
 
-      Stripe.card.createToken($form, CCHBBClient.stripeResponseHandler);
+    Stripe.card.createToken($form, CCHBBClient.stripeResponseHandler);
 
     // Prevent the form from submitting with the default action
-      return false;
-    });
+    return false;
   });
+});
