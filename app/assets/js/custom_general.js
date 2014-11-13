@@ -15,7 +15,7 @@
 		//map-marker #1
 		var marker1_Latitude=42.349331
 		var marker1_Longitude=-71.050008
-		var marker1_content="<h2>Bob's Bagels</h2> Boston, MA" // marker or  on click content (Info Window)
+		var marker1_content="<h2>Bob's Bagels</h2>" // marker or  on click content (Info Window)
 		var marker1_pointerUrl = 'assets/img/map-marker.png' // set your color pointer here!
 //********************* Google MAP END *********************/
 
@@ -188,48 +188,6 @@ var hash_fullname= "#" + hash;
 
 
 /***************************************************
-		  		For	Menu Selection active
-***************************************************/
-
-// jQuery(document).ready(function($){
-// "use strict";
-
-// // on hash change
-// window.onhashchange = function() {
-// $('.selected').removeClass('selected');
-// var hash = window.location.hash;
-
-// if (hash!=""){
-// $( "a[href='"+hash+"']" ).addClass('selected');
-// }}
-// // on click navigation add class selected
-// $("#header ul.nav li a").click(function () {
-// 	$('ul.nav li a').removeAttr('class');
-// 	$(this).attr('class', 'nav-link selected');
-// 	});
-
-// // on external and internal page link
-// $('.link').click(function () {
-// var name = $(this).attr('href');
-// window.location.href = name;
-// });
-
-
-// $(function(){
-// 	$('#sub-nav').slicknav({
-// 	label: '',
-// 	duration: 1000,
-// 	easingOpen: "easeOutQuint", //available with jQuery UI
-// 	closeOnClick:true
-// });
-// });
-
-
-
-// });
-
-
-/***************************************************
 		  	//custom animation functions
 ***************************************************/
 function modalshow(modalid)
@@ -345,56 +303,6 @@ $(window).load(function() {
 
 });
 
-
-
-// ******************************************************************************************
-// Reservation Form Start
-// ******************************************************************************************
-// jQuery(document).ready(function($){
-// "use strict";
-//   $('#reservation_form').validate(
-//     {
-//     rules: {
-//     name: {
-//     minlength: 2,
-//     required: true
-//     },
-// 	phone: {
-//     required: true,
-//     },
-//     email: {
-//     required: true,
-//     email: true
-//     },
-//     subject: {
-//     minlength: 2,
-//     required: true
-//     },
-//     message: {
-//     minlength: 2,
-//     required: true
-//     }
-//     },
-//     highlight: function(element) {
-//     $(element).closest('.control-group').removeClass('success').addClass('error');
-//     },
-//     success: function(element) {
-//     element
-//     .text('OK!').addClass('valid')
-//     .closest('.control-group').removeClass('error').addClass('success');
-//     },
-// 	submitHandler: function(form) {
-// 					// do other stuff for a valid form
-// 					$.post('reservation_form.php', $("#reservation_form").serialize(), function(data) { // action file is here
-// 						$('#reservation_form').html(data);
-// 					});
-// 				}
-//     });
-//     }); // end document.ready
-
-
-//Reservation Form END
-
 // ******************************************************************************************
 // Contact Form Start
 // ******************************************************************************************
@@ -431,7 +339,7 @@ jQuery(document).ready(function($){
     .text('OK!').addClass('valid')
     .closest('.control-group').removeClass('error').addClass('success');
     },
-	submitHandler: function(form) {
+		submitHandler: function(form) {
 					// do other stuff for a valid form
 					$.post('contact_form.php', $("#contact_form").serialize(), function(data) { // action file is here
 						$('#contact_form').html(data);
@@ -548,31 +456,6 @@ jQuery(document).ready(function($){
 				 infowindow.open(map_canvas,marker1);
 				 });
 				// marker 1 END
-
-
-
-				//****************************************************************************
-		  		// marker 2 content
-				//****************************************************************************
-				var pointer2 = new google.maps.LatLng(marker2_Latitude,marker2_Longitude);
-
-				var marker2= new google.maps.Marker({
-				 position : pointer2,
-				 map : map_canvas,
-				 icon: marker2_pointerUrl //Custom Pointer URL
-				 });
-
-				google.maps.event.addListener(marker2,'click',
-				 function() {
-				 var infowindow = new google.maps.InfoWindow(
-				 {content:marker2_content });
-				 infowindow.open(map_canvas,marker2);
-				 });
-				// marker 2 END
-
-
-
-
 			}
 
 				window.onload = function() {
@@ -583,122 +466,6 @@ jQuery(document).ready(function($){
 		});
 
 //Google map end
-
-
-
-//****************************************************************************
-		  		//Reservation page Date picker
-//****************************************************************************
-// jQuery(document).ready(function($){
-// 		 "use strict";
-// /* Date Picker */
-//   $('.form_datetime').datetimepicker({
-//         language:  'en',
-//         weekStart: 1,
-//         todayBtn:  1,
-// 		autoclose: 1,
-// 		todayHighlight: 1,
-// 		startView: 2,
-// 		forceParse: 0,
-//         showMeridian:0,
-// 		pickerPosition: "bottom-left"
-//     });
-//   });
-
-/* // Date Picker */
-
-
-
-//****************************************************************************
-		  		//Home page Promotions options
-//****************************************************************************
-// jQuery(document).ready(function($){
-// "use strict";
-//   	$('.spmenu1, .spmenu2, .spmenu3, .spmenu4').hover(function() {
-//   		$(this).addClass('forefront');
-//   	}, function() {
-//   		$(this).removeClass('forefront');
-//   	})
-// });
-
-
-/* Promotions BOX1 */
-// $(document).ready(function() {
-// 	"use strict";
-
-// 	var $lightbox = $('#lightbox');
-//     $('[data-target="#lightbox"]').on('click', function(event) {
-//         var $img = $(this).find('img'),
-//             src = $img.attr('src'),
-//             alt = $img.attr('alt'),
-//             css = {
-//                 'maxWidth': $(window).width() - 100,
-//                 'maxHeight': $(window).height() - 100
-//             };
-
-//         $lightbox.find('.close').addClass('hidden');
-//         $lightbox.find('img').attr('src', src);
-//         $lightbox.find('img').attr('alt', alt);
-//         $lightbox.find('img').css(css);
-//     });
-
-//     $lightbox.on('shown.bs.modal', function (e) {
-//         var $img = $lightbox.find('img');
-
-//         $lightbox.find('.modal-dialog').css({'width': $img.width()});
-//         $lightbox.find('.close').removeClass('hidden');
-//     });
-// });
-/*   Promotions BOX1 End   */
-
-
-/* Promotions BOX2 */
-// $(document).ready(function() {
-// "use strict";
-//     var $lightbox = $('#lightbox2');
-
-//     $('[data-target="#lightbox2"]').on('click', function(event) {
-//         var $img = $(this).find('iframe'),
-//             src = $img.attr('src'),
-//             alt = $img.attr('alt'),
-//             css = {
-//                 'maxWidth': $(window).width() - 100,
-//                 'maxHeight': $(window).height() - 100
-//             };
-
-//         $lightbox.find('.close').addClass('hidden');
-//         $lightbox.find('iframe').attr('src', src);
-//         $lightbox.find('iframe').attr('alt', alt);
-//         $lightbox.find('iframe').css(css);
-//     });
-
-//     $lightbox.on('shown.bs.modal', function (e) {
-//         var $img = $lightbox.find('iframe');
-
-//         $lightbox.find('.modal-dialog').css({'width': $img.width()});
-//         $lightbox.find('.close').removeClass('hidden');
-//     });
-// });
-/*   Promotions BOX2 End   */
-
-
-/* Promotions BOX3 */
-// $(document).ready(function() {
-// 	"use strict";
-//     var $lightbox = $('#lightbox3');
-
-//     $lightbox.on('shown.bs.modal', function (e) {
-//         var $img = $lightbox.find('img');
-
-//         $lightbox.find('.modal-dialog').css({'width': $img.width()});
-//         $lightbox.find('.close').removeClass('hidden');
-//     });
-// });
-
-/*   Promotions BOX3 End   */
-
-//Home page Promotions options  END
-
 
 
 
@@ -777,41 +544,4 @@ $("body").jpreLoader(
 	 })
 
 });
-
-
-/* Video Containers */
-// $(".video_containers").fitVids();
-/* //Video Containers */
-
-
-/***************************************************
-		  		   // Portfolio on mouseover opactiy
-***************************************************/
-
-// jQuery(document).ready(function($){
-// "use strict";
-
-// 		jQuery("area[data-rel^='prettyPhoto']").prettyPhoto();
-// 		jQuery("#portfolio-grid:first a[data-rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'pp_default',slideshow:3000, autoplay_slideshow: true,deeplinking:false});
-// 		jQuery(".portfolio-grid:gt(0) a[data-rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',slideshow:3000, deeplinking:false});
-// 		jQuery("#custom_content a[data-rel^='prettyPhoto']:first").prettyPhoto({
-// 		custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
-// 		changepicturecallback: function(){ initialize(); }
-// 		});
-// 		jQuery("#custom_content a[data-rel^='prettyPhoto']:last").prettyPhoto({
-// 		custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
-// 		changepicturecallback: function(){ _bsap.exec(); }
-// 		});
-// });
-//prettyPhoto END
-
-
- //mixitup Portfolio filters
-  // $('#portfolio-grid').mixitup({
-  //   effects: ['fade','scale'],
-  //   easing: 'snap'
-  // });
-//mixitup Portfolio END
-
-
 
