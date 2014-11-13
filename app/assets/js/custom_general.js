@@ -6,24 +6,17 @@
 
 		var color = "#9E2811" // google map background colour
 		var saturation = 100 //
-		var mapLatitude=40.710892
-		var mapLongitude=-74.004920//(Fist Value Latitude, Second Value ), get YOUR coordenates here!: http://itouchmap.com/latlong.html
-		var mapZoom_value=16 // Map zoom level parameter only numeric
+		var mapLatitude=42.350744
+		var mapLongitude=-71.043509//(Fist Value Latitude, Second Value ), get YOUR coordenates here!: http://itouchmap.com/latlong.html
+		var mapZoom_value=15 // Map zoom level parameter only numeric
 
 
 // Google map marker example 2 locations
 		//map-marker #1
-		var marker1_Latitude=40.707892
-		var marker1_Longitude=-74.008920
-		var marker1_content="<h2>Bob's Bagels</h2> Bridge Water, NJ" // marker or  on click content (Info Window)
+		var marker1_Latitude=42.349331
+		var marker1_Longitude=-71.050008
+		var marker1_content="<h2>Bob's Bagels</h2> Boston, MA" // marker or  on click content (Info Window)
 		var marker1_pointerUrl = 'assets/img/map-marker.png' // set your color pointer here!
-
-		//map-marker #2
-		var marker2_Latitude=40.710892
-		var marker2_Longitude=-74.012920
-		var marker2_content="<h2>Bob's Bagels</h2>San Diego California" // marker or  on click content (Info Window)
-		var marker2_pointerUrl = 'assets/img/map-marker.png' // set your color pointer here!
-
 //********************* Google MAP END *********************/
 
 
