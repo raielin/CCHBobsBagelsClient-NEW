@@ -54,6 +54,11 @@ var CCHBBClient = {
   }
 };
 
+CCHBBClient.renderPgNav = function() {
+  var compiledTemplate = Handlebars.getTemplate('nav_pgs');
+  var html = compiledTemplate({});
+};
+
 CCHBBClient.renderCart = function(name, price) {
   CCHBBClient.cart.orders.push({name: name, price: price});
 };
@@ -124,10 +129,11 @@ var Router = Backbone.Router.extend({
   },
 
   menu: function() {
+    // var template = Handlebars.compile($("#menu-temp").html());
     var template = Handlebars.templates['menu'];
 
     $('#content').html(template({
-        template_name: 'MENU'
+      template_name: 'MENU'
     }));
 
     $.ajax({
@@ -143,8 +149,10 @@ var Router = Backbone.Router.extend({
   },
 
   about: function() {
-    var template = Handlebars.compile($("#about-temp").html());
-    $('#content').html(template({}));
+    // var template = Handlebars.compile($("#about-temp").html());
+    // $('#content').html(template({}));
+    var template = Handlebars.templates['about'];
+    $('#about').html(template({}));
   },
 
   contact: function() {
