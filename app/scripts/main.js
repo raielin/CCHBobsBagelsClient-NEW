@@ -9,7 +9,49 @@ var CCHBBClient = {
     orders: []
   },
 
-  menu: {}
+  menu: {},
+
+  stripeResponseHandler: function(status, response) {
+      var $form = $('#payment-form');
+
+      if (response.error) {
+        // Show the errors on the form
+        $form.find('.payment-errors').text(response.error.message);
+        $form.find('button').prop('disabled', false);
+      } else {
+        // response contains id and card, which contains additional card details
+        var token = response.id;
+        var fullName = response.card.name;
+        var street = response.card.address_line1;
+        var city = response.card.address_city;
+        var state = response.card.address_state;
+        var zip = response.card.address_zip;
+        var total = 0;
+        for(var i = 0, length = CCHBBClient.cart.orders.length; i < length; i++) {
+          total += parseFloat(CCHBBClient.cart.orders[i].price);
+        };
+
+        for(var i = 0, length = CCHBBClient.cart.orders.length; i < length; i++) {
+          var name = CCHBBClient.cart.orders[i].name;
+          var price = CCHBBClient.cart.orders[i].price;
+
+          $form.append($('<input type="hidden" name="order_item_attributes[name]" />').val(name));
+          $form.append($('<input type="hidden" name="order_item_attributes[price]" />').val(price));
+        };
+
+
+        // Insert the token into the form so it gets submitted to the server
+        $form.append($('<input type="hidden" name="order[access_token]" />').val(token));
+        $form.append($('<input type="hidden" name="order[name]" />').val(fullName));
+        $form.append($('<input type="hidden" name="order[street]" />').val(street));
+        $form.append($('<input type="hidden" name="order[city]" />').val(city));
+        $form.append($('<input type="hidden" name="order[state]" />').val(state));
+        $form.append($('<input type="hidden" name="order[zipcode]" />').val(zip));
+        $form.append($('<input type="hidden" name="order[price]" />').val(total));
+        // and submit
+        $form.get(0).submit();
+      }
+  }
 };
 
 CCHBBClient.renderCart = function(name, price) {
@@ -20,6 +62,7 @@ CCHBBClient.renderCart = function(name, price) {
 CCHBBClient.addEvents = function() {
   $('#content').on('click', '.menu-item', function(e) {
     e.preventDefault();
+
     var name = $(this).html();
     var price = $(this).next().html();
     CCHBBClient.renderCart(name, price);
@@ -28,6 +71,7 @@ CCHBBClient.addEvents = function() {
 
   $('#content').on('click', '.js-delete-item', function(e) {
     e.preventDefault();
+
     var name = $(this).next().html();
     var newOrder = CCHBBClient.cart.orders.filter(function(item) {
                         return item.name !== name;
@@ -38,12 +82,17 @@ CCHBBClient.addEvents = function() {
 
   $('#content').on('click', '.js-delete-item-cart', function(e) {
     e.preventDefault();
+
     var name = $(this).next().html();
     var newOrder = CCHBBClient.cart.orders.filter(function(item) {
                         return item.name !== name;
                        });
     CCHBBClient.cart.orders = newOrder;
     CCHBBClient.router.menu();
+  });
+
+  $('#content').on('click', 'input[value="Place Order"]', function(e) {
+    CCHBBClient.router.checkout();
   });
     // $('#js-placeOrder').on('submit', CCHBBClient.checkOut);
 
@@ -62,7 +111,8 @@ var Router = Backbone.Router.extend({
     'about': 'about',
     'contact': 'contact',
     'checkout': 'checkout',
-    'cart': 'cart'
+    'cart': 'cart',
+    'confirmation': 'confirmation'
   },
 
   home: function() {
@@ -111,35 +161,6 @@ var Router = Backbone.Router.extend({
       order_items: CCHBBClient.cart.orders,
       total_price: total
     }));
-
-    Stripe.setPublishableKey('pk_test_0fbtu0To5Q8TurGcFy6XZ505');
-
-    function stripeResponseHandler(status, response) {
-      var $form = $('#payment-form');
-
-      if (response.error) {
-        // Show the errors on the form
-        $form.find('.payment-errors').text(response.error.message);
-        $form.find('button').prop('disabled', false);
-      } else {
-        // response contains id and card, which contains additional card details
-        var token = response.id;
-        var fullName = response.card.name;
-        var street = response.card.address_line1;
-        var city = response.card.city;
-        var state = response.card.state;
-        var zip = response.card.zip;
-        // Insert the token into the form so it gets submitted to the server
-        $form.append($('<input type="hidden" name="order[access_token]" />').val(token));
-        $form.append($('<input type="hidden" name="order[name]" />').val(fullName));
-        $form.append($('<input type="hidden" name="order[street]" />').val(street));
-        $form.append($('<input type="hidden" name="order[city]" />').val(city));
-        $form.append($('<input type="hidden" name="order[state]" />').val(state));
-        $form.append($('<input type="hidden" name="order[zip]" />').val(zip));
-        // and submit
-        $form.get(0).submit();
-      }
-    }
   },
 
   cart: function() {
@@ -162,13 +183,17 @@ $(function() {
 
   $('#payment-form').submit(function(event) {
     var $form = $(this);
+    Stripe.setPublishableKey('pk_test_0fbtu0To5Q8TurGcFy6XZ505');
 
+    $('#content').on('click', '#checkout-button', function(event) {
+
+      var $form = $('#payment-form');
     // Disable the submit button to prevent repeated clicks
-    $form.find('button').prop('disabled', true);
+      $form.find('button').prop('disabled', true);
 
-    Stripe.card.createToken($form, stripeResponseHandler);
+      Stripe.card.createToken($form, CCHBBClient.stripeResponseHandler);
 
     // Prevent the form from submitting with the default action
-    return false;
+      return false;
+    });
   });
-});

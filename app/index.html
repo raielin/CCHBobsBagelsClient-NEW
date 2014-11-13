@@ -47,7 +47,7 @@
             <li class="menu-type">{{ name }}
                 <ul id="list">
                   {{#menu_items}}
-                    <li><a class="menu-item"  data-id="{{ id }}" href="#">{{ name }}</a><span class="price"> ${{ price }}</span></li>
+                    <li><a class="menu-item"  data-id="{{ id }}" href="#">{{ name }}</a><span class="price"> {{ price }}</span></li>
                   {{/menu_items}}
                 </ul>
             </li>
@@ -60,7 +60,7 @@
                 <li><a class="js-delete-item-cart" href="#">X</a> <a class="order-item">{{ name }}</a><span class="price"> {{ price }}</span></li>
             {{/each}}
           </ul>
-          <a href="#/checkout"><input class="actions" type="submit" value="Place Order"/></a>
+          <input class="actions" type="submit" value="Place Order"/>
         </div>
     </script>
 
@@ -71,7 +71,7 @@
                 <li><a class="js-delete-item" href="#">X</a> <a class="order-item">{{ name }}</a><span class="price"> {{ price }}</span></li>
             {{/each}}
           </ul>
-          <a href="#/checkout"><input class="actions" type="submit" value="Place Order"/></a>
+          <input class="actions" type="submit" value="Place Order"/>
     </script>
 
     <script id="about-temp" type="text/x-handlebars-template">
@@ -87,12 +87,12 @@
      <h1>Order Summary</h1>
         <ul>
           {{#each order_items}}
-             <li><a class="order-item">{{ name }}</a><span class="price">{{ price }}</span></li>
+             <li><a class="order-item">{{ name }}</a><span class="price"> {{ price }}</span></li>
           {{/each}}
-          <div><strong>Subtotal:</strong> ${{ total_price }}</div>
+          <div><strong>Subtotal:</strong>${{ total_price }}</div>
         </ul>
         <h1>Checkout</h1>
-        <form action="http://localhost:3000/users" method="POST" id="payment-form">
+        <form action="http://localhost:3000/orders.json" method="POST" id="payment-form">
           <span class="payment-errors"></span>
 
           <div class="form-row">
@@ -105,28 +105,28 @@
           <div class="form-row">
             <label>
               <span>Street</span>
-              <input type="text" size="20" data-stripe="street"/>
+              <input type="text" size="20" data-stripe="address-line1"/>
             </label>
           </div>
 
           <div class="form-row">
             <label>
               <span>City</span>
-              <input type="text" size="20" data-stripe="city"/>
+              <input type="text" size="20" data-stripe="address-city"/>
             </label>
           </div>
 
           <div class="form-row">
             <label>
               <span>State</span>
-              <input type="text" size="20" data-stripe="state"/>
+              <input type="text" size="20" data-stripe="address-state"/>
             </label>
           </div>
 
           <div class="form-row">
             <label>
               <span>Zipcode</span>
-              <input type="text" size="20" data-stripe="zip"/>
+              <input type="text" size="20" data-stripe="address-zip"/>
             </label>
           </div>
 
@@ -153,8 +153,12 @@
             <input type="text" size="4" data-stripe="exp-year"/>
           </div>
 
-          <button type="submit" class="actions">Submit Payment</button>
+          <button type="submit" class="actions" id="checkout-button">Submit Payment</button>
         </form>
+    </script>
+
+    <script id="conf-temp" type="text/x-handlebars-template">
+      <h1>Order Confirmation</h1>
     </script>
 
     <div class="container">
