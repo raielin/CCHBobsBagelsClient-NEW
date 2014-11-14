@@ -7,13 +7,29 @@
               <div class="container">
               <div class="col-md-3 empty">&nbsp;</div>
                 <div class="col-md-9 content_text">
-                  <h1>Three-Fourth-Width</h1>
+                  <h1>Menu</h1>
                     <div class="clearfix pad_top13">
                       <div class="col-md-7">
                         <p class="row">
-                          <span class="bold">Specializes in Non-veg , 65, Thanthuri, Sandwich, 65 smoked sandwich.</span><br/><br/> Our team of highly qualified professionals headed by an experienced Chef. Lnim ad minim veniam, quis nostrud.<br/><br/>Exercitation ullamco laboris nisi ut aliquip ex ea commodo. Duis aute dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla  do tempore ercitationem ut labore. et dolore magna aliqua.
+                          <span class="bold">Yummy sandwiches!</span><br/><br/>
+
+                          {{!-- MENU CONTENT HERE --}}
+                          <ul id="menu-list">
+                            {{#each menu}}
+                              <li class="menu-type">{{ name }}
+                                  <ul id="list">
+                                    {{#menu_items}}
+                                      <li><a class="menu-item"  data-id="{{ id }}" href="#">{{ name }}</a><span class="price"> {{ price }}</span></li>
+                                    {{/menu_items}}
+                                  </ul>
+                              </li>
+                            {{/each}}
+                          </ul>
                         </p>
                       </div>
+
+
+                      {{!-- RIGHT SIDE CONTENT FOR CART --}}
                       <div class="col-md-5">
                         <div class="right_content ">
                         <div class="sub_title">
