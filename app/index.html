@@ -34,40 +34,10 @@
     </div>
 
     <div class="container-fluid">
-      <!--
-      <script id="home" type="text/x-handlebars-template">
-          <h1>Home</h1>
-      </script>
-      -->
-      <!-- // <script id="menu-temp" type="text/x-handlebars-template">
-      //   <div class="row">
-      //     <div class="col-md-8">
-      //       <h1>Menu</h1>
-      //       <ul id="menu-list">
-      //         {{#each menu}}
-      //           <li class="menu-type">{{ name }}
-      //               <ul id="list">
-      //                 {{#menu_items}}
-      //                   <li><a class="menu-item"  data-id="{{ id }}" href="#">{{ name }}</a><span class="price"> {{ price }}</span></li>
-      //                 {{/menu_items}}
-      //               </ul>
-      //           </li>
-      //         {{/each}}
-      //       </ul>
-      //     </div>
-      //     <div class="col-md-4">
-      //       <div id="js-cart">
-      //         <p><strong>Cart</strong></p>
-      //         <ul>
-      //           {{#each order_items}}
-      //               <li><a class="js-delete-item-cart" href="#">X</a> <a class="order-item">{{ name }}</a><span class="price"> {{ price }}</span></li>
-      //           {{/each}}
-      //         </ul>
-      //         <input class="actions" type="submit" value="Place Order"/>
-      //       </div>
-      //     </div>
-      //   </div>
-      // </script> -->
+
+      <!-- HOME content at templates/home.handlebars -->
+      <!-- ABOUT content at templates/about.handlebars -->
+      <!-- MENU content at templates/menu.handlebars -->
 
       <script id="cart-temp" type="text/x-handlebars-template">
         <h1>Cart</h1>
@@ -79,22 +49,6 @@
           <input class="actions" type="submit" value="Place Order"/>
       </script>
 
-      <script id="about-temp" type="text/x-handlebars-template">
-        <div class="row">
-          <div class="col-md-4">
-            <h3>Bagels - made with love from only the freshest ingredients</h3>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <h1>Meet Bob!!</h1>
-            <p>Robert Bob Bagler was born in Boston in 1951; after years of working in his father`s restaurant, Arthur`s, he struck out on his own in 1979 and started Bob`s Bagels right where it sits today, at XYZ Ave in Boston. For the last forty years, Bob`s Bagels has strived to proved the best bagels in town, at the best prices, made with love from only the freshest ingredients. Bob still works the counter, just like the old days, so stop in sometime and say hello!</p>
-          </div>
-          <div class="col-md4">
-            <img src="styles/assets/img/bob.jpg" alt="Bob of Bob's Bagels">
-          </div>
-        </div>
-      </script>
 
       <script id="contact-temp" type="text/x-handlebars-template">
           <div class="row">
@@ -188,40 +142,8 @@
           <div id="content"></div>
       </div>
 
-      <!-- build:js(.) scripts/vendor.js -->
-      <!-- bower:js -->
-      <!-- endbower -->
-      <!-- endbuild -->
-
 
     </div>
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-<!--
-=begin
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
-=end
--->
-        <!-- build:js(.) scripts/plugins.js -->
-        <!-- <script src="bower_components/bootstrap/js/affix.js"></script>
-        // <script src="bower_components/bootstrap/js/alert.js"></script>
-        // <script src="bower_components/bootstrap/js/dropdown.js"></script>
-        // <script src="bower_components/bootstrap/js/tooltip.js"></script>
-        // <script src="bower_components/bootstrap/js/modal.js"></script>
-        // <script src="bower_components/bootstrap/js/transition.js"></script>
-        // <script src="bower_components/bootstrap/js/button.js"></script>
-        // <script src="bower_components/bootstrap/js/popover.js"></script>
-        // <script src="bower_components/bootstrap/js/carousel.js"></script>
-        // <script src="bower_components/bootstrap/js/scrollspy.js"></script>
-        // <script src="bower_components/bootstrap/js/collapse.js"></script>
-        // <script src="bower_components/bootstrap/js/tab.js"></script> -->
-
         <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 
         <script src="bower_components/underscore/underscore.js"></script>
@@ -229,10 +151,10 @@
         <script src="bower_components/handlebars/handlebars.js"></script>
         <script src="templates/templates.js"></script>
         <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-        <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
-        <!-- INCLUDE WHEN READY FOR PRODUCTION
-        // <script src="bower_components/handlebars/handlebars.runtime.js"></script>
-        -->
+
+        <!-- INCLUDE WHEN READY FOR PRODUCTION -->
+        <script src="bower_components/handlebars/handlebars.runtime.js"></script>
+
 </body>
 </html>

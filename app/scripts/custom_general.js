@@ -16,7 +16,7 @@
 		var marker1_Latitude=42.349331
 		var marker1_Longitude=-71.050008
 		var marker1_content="<h2>Bob's Bagels</h2>" // marker or  on click content (Info Window)
-		var marker1_pointerUrl = 'assets/img/map-marker.png' // set your color pointer here!
+		var marker1_pointerUrl = 'img/map-marker.png' // set your color pointer here!
 //********************* Google MAP END *********************/
 
 
