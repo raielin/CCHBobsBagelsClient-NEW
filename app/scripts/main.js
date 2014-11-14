@@ -127,7 +127,7 @@ var Router = Backbone.Router.extend({
   },
 
   menu: function() {
-    var template = Handlebars.templates['menu'].html());
+    var template = Handlebars.templates['menu'];
     $('#content').html(template({}));
     $.ajax({
       url: CCHBBClient.baseURL + 'menus' + CCHBBClient.jsonAppend,
