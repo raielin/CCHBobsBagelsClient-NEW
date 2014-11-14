@@ -1,0 +1,66 @@
+<div id="threefourth-menu" class="item three_fourth">
+      <img src="assets/img/catering.jpg" alt="" class="fullBg">
+        <div class="content">
+        <div class="content_overlay_three_fourth"></div>
+          <div class="content_inner">
+            <div class="row contentscroll">
+              <div class="container">
+              <div class="col-md-3 empty">&nbsp;</div>
+                <div class="col-md-9 content_text">
+                  <h1>Menu</h1>
+                    <div class="clearfix pad_top13">
+                      <div class="col-md-7">
+                        <p class="row">
+                          <span class="bold">Yummy sandwiches!</span><br/><br/>
+
+                          {{!-- MENU CONTENT HERE --}}
+                          <ul id="menu-list">
+                            {{#each menu}}
+                              <li class="menu-type">{{ name }}
+                                  <ul id="list">
+                                    {{#menu_items}}
+                                      <li><a class="menu-item"  data-id="{{ id }}" href="#">{{ name }}</a><span class="price"> {{ price }}</span></li>
+                                    {{/menu_items}}
+                                  </ul>
+                              </li>
+                            {{/each}}
+                          </ul>
+                        </p>
+                      </div>
+
+
+                      {{!-- RIGHT SIDE CONTENT FOR CART --}}
+                      <div class="col-md-5">
+                        <div class="right_content ">
+                        <div class="sub_title">
+                          <h4>Opening hours:</h4>
+                        </div>
+                          <div class="hour_table">
+                            <table>
+                              <tr>
+                                <td class="days">mon - Fri</td>
+                                <td>9:00am - 4:00pm</td>
+                              </tr>
+                              <tr>
+                                <td class="days">Sat</td>
+                                <td>9:00am - 2:00pm</td>
+                              </tr>
+                              <tr>
+                                <td class="days">Sun</td>
+                                <td>8:30am - 1:00pm</td>
+                              </tr>
+                            </table>
+                          </div>
+                          <div class="sub_title">
+                            <h4>book your table:</h4>
+                          </div>
+                          <p>We welcome walk-in guests,online at<br/><br><a class="button nav-link" href="#reservation">Book table</a></p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
