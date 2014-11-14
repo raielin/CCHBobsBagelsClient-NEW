@@ -821,6 +821,8 @@ Home Page
 		position: absolute;
         z-index:-1;
 }
+
+.three_fourth .content_inner{ padding-left:110px;}
 /* //  Three Fourth Page */
 
 
