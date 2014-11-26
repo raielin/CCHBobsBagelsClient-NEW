@@ -58,7 +58,7 @@ if(type.length > 1)
 {
 hash = type[1];
 }
-
+debugger
 if (hash!=""){
 var hash_fullname= "#" + hash;
 $( "a[href='"+hash_fullname+"']" ).addClass('selected');
