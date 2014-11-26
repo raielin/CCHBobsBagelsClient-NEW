@@ -1,4 +1,34 @@
-<div id="threefourth-menu" class="item three_fourth">
+{{!-- ORIGINAL MENU PAGE --}}
+<div class="row">
+  <div class="col-md-8">
+    <h1>Menu</h1>
+    <ul id="menu-list">
+      {{#each menu}}
+        <li class="menu-type">{{ name }}
+            <ul id="list">
+              {{#menu_items}}
+                <li><a class="menu-item"  data-id="{{ id }}" href="#">{{ name }}</a><span class="price"> {{ price }}</span></li>
+              {{/menu_items}}
+            </ul>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class="col-md-4">
+    <div id="js-cart">
+      <p><strong>Cart</strong></p>
+      <ul>
+        {{#each order_items}}
+            <li><a class="js-delete-item-cart" href="#">X</a> <a class="order-item">{{ name }}</a><span class="price"> {{ price }}</span></li>
+        {{/each}}
+      </ul>
+      <input class="actions" type="submit" value="Place Order"/>
+    </div>
+  </div>
+</div>
+
+{{!-- STYLED CONTENT --}}
+{{!-- <div id="threefourth-menu" class="item three_fourth">
       <img src="img/menu2_bg.jpg" alt="" class="fullBg">
         <div class="content">
         <div class="content_overlay_three_fourth"></div>
@@ -64,4 +94,4 @@
             </div>
           </div>
         </div>
-    </div>
+    </div> --}}
